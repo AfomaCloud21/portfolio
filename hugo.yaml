@@ -158,7 +158,7 @@ params:
     title: "Afoma Egbuonu."
     subtitle: "DevOps Engineer & Cloud Infrastructure Specialist"
     content: "I own production cloud infrastructure for a live EdTech platform on Microsoft Azure — provisioning with Terraform, orchestrating containers on Kubernetes (AKS/EKS), and shipping through CI/CD pipelines and GitOps. I diagnose infrastructure issues directly from logs, quota errors, and pipeline failures, and I increasingly bring agentic AI tooling like Claude Code into that workflow to move faster without cutting corners."
-    image: /images/hero.svg
+    image: /images/me-hero.jpeg
     bottomImage:
       enable: true
     # roundImage: true # Make hero image circular | default false
@@ -182,7 +182,7 @@ params:
   about:
     enable: true
     title: "About Me"
-    image: "/images/me.png"
+    image: "/images/me-about.jpeg"
     content: |-
       I'm a DevOps Engineer and Repository Manager based in Lagos, Nigeria, with hands-on ownership of production cloud infrastructure for a live EdTech platform on Microsoft Azure. I work across the full infrastructure lifecycle: provisioning with Terraform, container orchestration on Kubernetes (AKS/EKS), CI/CD pipeline design (Azure Pipelines, GitHub Actions, ArgoCD), and GitOps-based release management.
 
