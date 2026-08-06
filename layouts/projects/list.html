@@ -19,7 +19,7 @@
             <div class="card my-3 h-100" title="{{ .Title }}">
                 {{ if .Params.image }}
                 <div class="card-head">
-                    <img class="card-img-top" src="{{ .Params.image }}" alt="{{ .Title }}">
+                    <img class="card-img-top" src="{{ if hasPrefix .Params.image "/" }}{{ .Params.image | strings.TrimPrefix "/" | relURL }}{{ else }}{{ .Params.image }}{{ end }}" alt="{{ .Title }}">
                 </div>
                 {{ end }}
                 <div class="card-body bg-transparent p-3">

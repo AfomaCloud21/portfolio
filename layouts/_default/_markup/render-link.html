@@ -1,0 +1,5 @@
+{{- $href := .Destination -}}
+{{- if hasPrefix $href "/" -}}
+  {{- $href = $href | strings.TrimPrefix "/" | relURL -}}
+{{- end -}}
+<a href="{{ $href }}"{{ if hasPrefix $href "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>

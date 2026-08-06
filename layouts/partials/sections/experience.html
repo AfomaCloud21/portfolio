@@ -101,7 +101,7 @@
                                                                         data-bs-original-title={{.tooltip}}
                                                                     {{ end }}
                                                                 >
-                                                                    <img src="{{ .icon }}">
+                                                                    <img src="{{ if hasPrefix .icon "/" }}{{ .icon | strings.TrimPrefix "/" | relURL }}{{ else }}{{ .icon }}{{ end }}">
                                                                 </a>
                                                             </div>
                                                         {{ end }}
