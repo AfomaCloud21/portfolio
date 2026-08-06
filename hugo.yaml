@@ -1,0 +1,325 @@
+baseURL: "https://afomacloud21.github.io/portfolio/"
+languageCode: "en-us"
+title: "Afoma Egbuonu | DevOps Engineer"
+theme: hugo-profile
+
+# Multilingual configuration
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: false
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    contentDir: "content"
+    menu:
+      main:
+        - identifier: projects
+          name: Projects
+          title: Case studies
+          url: /projects
+          weight: 1
+        - identifier: blog
+          name: Blog
+          title: Blog posts
+          url: /blogs
+          weight: 2
+        - identifier: gallery
+          name: Gallery
+          title: Image gallery
+          url: /gallery
+          weight: 3
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "JSON"
+  page:
+    - "HTML"
+    - "RSS"
+
+enableRobotsTXT: true
+
+#services:
+  #googleAnalytics:
+    #id: G-MEASUREMENT_ID
+  #disqus:
+    #shortname: your-disqus-shortname
+
+pagination:
+  pagerSize: 3
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+Menus:
+  main:
+    - identifier: gallery
+      name: Gallery
+      title: Gallery
+      url: /gallery
+      weight: 2
+    #Dropdown menu
+    # - identifier: dropdown
+    #   title: Example dropdown menu
+    #   name: Dropdown
+    #   weight: 3
+    # - identifier: dropdown1
+    #   title: example dropdown 1
+    #   name: example 1
+    #   url: /#
+    #   parent: dropdown
+    #   weight: 1
+    # - identifier: dropdown2
+    #   title: example dropdown 2
+    #   name: example 2
+    #   url: /#
+    #   parent: dropdown
+    #   weight: 2
+
+params:
+  title: "Hugo Profile"
+  description: "DevOps Engineer portfolio — AWS, Azure, Docker, Kubernetes, Terraform, Ansible, and CI/CD case studies."
+  # staticPath: ""  # The path to serve the static files from
+  favicon: "/fav.png"
+
+  # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
+  # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
+  # Note the lack of "" in true, it should be of boolean type.
+  useBootstrapCDN: false
+
+  # If you want to load dynamically responsive images from Cloudinary
+  # This requires your images to be uploaded + hosted on Cloudinary
+  # Uncomment and change YOUR_CLOUD_NAME to the Cloud Name in your Cloudinary console
+  # cloudinary_cloud_name: "YOUR_CLOUD_NAME"
+
+  # Whether to add mathjax support on all pages. Alternatively, you can opt-in per page by adding `mathjax: true` in the frontmatter.
+  mathjax: false
+
+  # Whether the fade animations on the home page will be enabled
+  animate: true
+
+  theme:
+    # disableThemeToggle: true
+    # defaultTheme: "light" # dark
+
+  font:
+    fontSize: 1rem # default: 1rem
+    fontWeight: 400 # default: 400
+    lineHeight: 1.5 # default: 1.5
+    textAlign: left # default: left
+
+  # color preference
+  # When using hex codes for colors, quotations must be used along with the # sign
+  # color:
+  #   textColor: "#343a40"
+  #   secondaryTextColor: "#6c757d"
+  #   textLinkColor: "#007bff"
+  #   backgroundColor: "#eaedf0"
+  #   secondaryBackgroundColor: "#64ffda1a"
+  #   primaryColor: "#007bff"
+  #   secondaryColor: "#f8f9fa"
+
+  #   darkmode:
+  #     textColor: "#e4e6eb"
+  #     secondaryTextColor: "#b0b3b8"
+  #     textLinkColor: "#ffffff"
+  #     backgroundColor: "#18191a"
+  #     secondaryBackgroundColor: "#212529"
+  #     primaryColor: "#ffffff"
+  #     secondaryColor: "#212529"
+
+  # If you want to customize the menu, you can change it here
+  navbar:
+    align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
+    # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
+    # showBrandLogo: false # Show brand logo in nav bar | default is true
+    brandName: "Afoma Egbuonu" # Brand name for the brand | default is the title variable
+    disableSearch: false
+    # searchPlaceholder: "Search"
+    stickyNavBar:
+      enable : true
+      showOnScrollUp : true
+    enableSeparator: false
+    menus:
+      disableAbout: false
+      disableExperience: false
+      disableEducation: false
+      disableProjects: false
+      disableAchievements: false
+      disableContact: false
+
+  # Hero
+  hero:
+    enable: true
+    intro: "Hi, my name is"
+    title: "Afoma Egbuonu."
+    subtitle: "DevOps Engineer & Cloud Infrastructure Specialist"
+    content: "I own production cloud infrastructure for a live EdTech platform on Microsoft Azure — provisioning with Terraform, orchestrating containers on Kubernetes (AKS/EKS), and shipping through CI/CD pipelines and GitOps. I diagnose infrastructure issues directly from logs, quota errors, and pipeline failures, and I increasingly bring agentic AI tooling like Claude Code into that workflow to move faster without cutting corners."
+    image: /images/hero.svg
+    bottomImage:
+      enable: true
+    # roundImage: true # Make hero image circular | default false
+    button:
+      enable: true
+      name: "Resume"
+      url: "/Afoma_Egbuonu_DevOps_CV.pdf"
+      download: true
+      newPage: false
+    socialLinks:
+      fontAwesomeIcons:
+        - icon: fab fa-github
+          url: https://github.com/AfomaCloud21
+        - icon: fab fa-linkedin
+          url: https://www.linkedin.com/in/afoma-egbuonu-a0304a43
+      customIcons:
+        - icon: /fav.png
+          url: "mailto:afomaegbuonu@gmail.com"
+
+  # About
+  about:
+    enable: true
+    title: "About Me"
+    image: "/images/me.png"
+    content: |-
+      I'm a DevOps Engineer and Repository Manager based in Lagos, Nigeria, with hands-on ownership of production cloud infrastructure for a live EdTech platform on Microsoft Azure. I work across the full infrastructure lifecycle: provisioning with Terraform, container orchestration on Kubernetes (AKS/EKS), CI/CD pipeline design (Azure Pipelines, GitHub Actions, ArgoCD), and GitOps-based release management.
+
+      I'm comfortable owning repository and access governance for a multi-contributor engineering team, and I diagnose infrastructure issues directly from logs, quota errors, and pipeline failures rather than documentation alone. I previously led product delivery as a Technical Product Manager — a background that shapes how I approach shipping infrastructure, with the same structured, detail-first discipline around planning and cross-functional delivery.
+    skills:
+      enable: true
+      title: "Technical skills I work with:"
+      items:
+        - "Microsoft Azure (App Service, AKS, MySQL Flexible Server)"
+        - "AWS (EKS, EC2, ECR)"
+        - "Docker & Helm"
+        - "Kubernetes & ArgoCD (GitOps)"
+        - "Terraform"
+        - "Ansible"
+        - "Azure Pipelines & GitHub Actions"
+        - "Prometheus, Grafana & Zipkin"
+        - "Git & GitHub (org & access management)"
+        - "Jira"
+        - "Claude Code / Agentic AI (MCP)"
+
+  # Experience
+  experience:
+    enable: true
+    # title: "Custom Name"
+    items:
+      - company: "Ibeya International R&D"
+        jobs:
+          - name: "DevOps Engineer & Repository Manager"
+            date: "Apr 2026 - present"
+            info:
+              content: "Owns cloud infrastructure and repository governance for Awas — ExamPrep Nigeria, an EdTech platform on Microsoft Azure"
+            content: |
+              Owns cloud infrastructure and repository governance for Awas — ExamPrep Nigeria, an EdTech platform on Microsoft Azure.
+
+              - Designed and provisioned the full Azure infrastructure end-to-end with Terraform: App Service hosting for a Python backend and React frontend, MySQL Flexible Server, and a dedicated media storage account for exam content
+              - Acts as sole repository manager for the Awas GitHub organization, gating all database schema changes through pull-request review before merge
+              - Diagnosed and resolved live infrastructure blockers, including Azure region VM quota limits, MySQL engine version mismatches, and multi-line Terraform block/backup syntax errors
+              - Manages onboarding and access for a small distributed engineering team operating under shared GitHub seats, balancing collaboration with change control
+              - Maintains a reproducible local development environment (WSL2, Azure CLI, GitHub CLI) to support consistent infrastructure operations across the team
+
+      - company: "Sunsage Limited"
+        jobs:
+          - name: "Technical Product Manager"
+            date: "Oct 2025 - Apr 2026"
+            content: |
+              Led cross-functional development of a medical application from requirements through delivery, coordinating engineering, design, and stakeholder input.
+
+              - Defined product requirements, feature scope, and user workflows; translated business needs into technical specifications for the engineering team
+              - Owned product lifecycle management, documentation, and delivery tracking — the same structured, detail-first discipline now central to my DevOps practice
+
+  # Education
+  education:
+    enable: true
+    # title: "Custom Name"
+    index: false
+    items:
+      - title: "Bachelor of Arts (BA), English Language & Literature"
+        school:
+          name: "University of Benin"
+        GPA: "Second Class Upper"
+
+  # Achievements (used here for certifications)
+  achievements:
+    enable: true
+    title: "Certifications"
+    items:
+      - title: "DMI Cohort-2 — DevOps & Cloud Engineering"
+        content: "Led by Pravin Mishra. Linux, AWS, Azure, Git, Terraform, Ansible, Docker, Kubernetes (2026). Recognized as Champion of the Week, Week 9."
+        url: "https://pravinmishra.com/dmi"
+      - title: "Agentic AI DevOps"
+        content: "Claude Code, MCP servers, hooks & skills for automated infrastructure workflows (2026)."
+      - title: "DevOps & Security Training"
+        content: "Digital Witch IT Training. Jun - Dec 2025."
+      - title: "Product Management Fellowship"
+        content: "Tech4Dev / Women Techsters. 2023 - 2024."
+      - title: "AI Virtual Assistant Internship"
+        content: "Elite Global AI. 2024."
+
+  # projects
+  # Case studies live as full pages under content/projects/ and are picked up
+  # automatically here (see layouts/partials/sections/projects.html override).
+  projects:
+    enable: true
+    title: "Case Studies"
+    items: []
+
+  #Contact
+  contact:
+    enable: true
+    # title: "Custom Name"
+    content: My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+    btnName: Mail me
+    btnLink: mailto:afomaegbuonu@gmail.com
+    # formspree:
+    #   enable: true # `contact.email` value will be ignored
+    #   formId: abcdefgh # Take it from your form's endpoint, like 'https://formspree.io/f/abcdefgh'
+    #   emailCaption: "Enter your email address"
+    #   messageCaption: "Enter your message here"
+    #   messageRows: 5
+
+  footer:
+    recentPosts:
+      path: "blogs"
+      count: 3
+      title: Recent Posts
+      enable: true
+      disableFeaturedImage: false
+    socialNetworks:
+      github: https://github.com/AfomaCloud21
+      linkedin: https://www.linkedin.com/in/afoma-egbuonu-a0304a43
+
+  # List pages like blogs and posts
+  listPages:
+    disableFeaturedImage: false
+
+  # Single pages like blog and post
+  singlePages:
+    socialShare: true
+    readTime:
+      enable: true
+      content: "min read"
+    scrollprogress:
+      enable: true
+    tags:
+      openInNewTab: true
+
+  # For translations
+  terms:
+    read: "Read"
+    toc: "Table Of Contents"
+    copyright: "All rights reserved"
+    emailText: "Check out this site"
+
+  datesFormat:
+    article: "Jan 2, 2006"
+    articleList: "Jan 2, 2006"
+    articleRecent: "Jan 2, 2006"
+
+  #customScripts: -| # You can add custom scripts which will be added before </body> tag
+  #  <script type="text/javascript"><!-- any script here --></script>
