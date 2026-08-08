@@ -1,0 +1,86 @@
+{{/*
+  Live GitHub activity — see .claude/github-activity-widget-brief.md
+  Fetched client-side, unauthenticated, on every page view: no rebuild
+  needed for new pushes to show up, and only ever the public GitHub API
+  (no token anywhere in this request), so private repos structurally
+  cannot appear here.
+*/}}
+<section id="github-activity" class="py-5">
+    <div class="container">
+        <div class="text-center mb-2">
+            <span class="gh-eyebrow"><span class="gh-eyebrow-prompt">$</span> gh repo list AfomaCloud21 --limit 6 --sort updated</span>
+        </div>
+        <h3 class="text-center">Recent Activity</h3>
+        <p class="text-center gh-activity-sub">Pulled live from GitHub on every visit — no rebuild required.</p>
+
+        <div id="github-activity-repos" class="gh-repo-grid" aria-live="polite">
+            <p class="github-activity-empty">Loading recent repositories&hellip;</p>
+        </div>
+
+        <div class="gh-stats-grid">
+            <div class="gh-stats-card">
+                <img
+                    loading="lazy"
+                    src="https://github-readme-stats.vercel.app/api?username=AfomaCloud21&show_icons=true&hide_border=true&bg_color=161B22&title_color=D4A73B&text_color=E6EDF3&icon_color=D4A73B"
+                    alt="AfomaCloud21's GitHub stats">
+            </div>
+            <div class="gh-stats-card">
+                <img
+                    loading="lazy"
+                    src="https://streak-stats.demolab.com/?user=AfomaCloud21&hide_border=true&background=161B22&stroke=30363D&ring=D4A73B&fire=D4A73B&currStreakNum=E6EDF3&sideNums=E6EDF3&currStreakLabel=D4A73B&sideLabels=8B949E&dates=8B949E"
+                    alt="AfomaCloud21's GitHub contribution streak">
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+(function () {
+    var container = document.getElementById('github-activity-repos');
+    if (!container) return;
+
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.textContent = str == null ? '' : str;
+        return div.innerHTML;
+    }
+
+    function formatDate(iso) {
+        try {
+            return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        } catch (e) {
+            return '';
+        }
+    }
+
+    // Deliberately unauthenticated: no token = the API can only ever
+    // return this user's PUBLIC repos. Do not add an Authorization header.
+    fetch('https://api.github.com/users/AfomaCloud21/repos?sort=updated&per_page=6')
+        .then(function (res) {
+            if (!res.ok) { throw new Error('GitHub API responded ' + res.status); }
+            return res.json();
+        })
+        .then(function (repos) {
+            if (!Array.isArray(repos) || repos.length === 0) {
+                container.innerHTML = '<p class="github-activity-empty">No public repositories found.</p>';
+                return;
+            }
+            container.innerHTML = repos.map(function (repo) {
+                var desc = repo.description ? escapeHtml(repo.description) : 'No description provided.';
+                var lang = repo.language ? escapeHtml(repo.language) : '—';
+                var updated = formatDate(repo.pushed_at || repo.updated_at);
+                return (
+                    '<a class="repo-card" href="' + repo.html_url + '" target="_blank" rel="noopener">' +
+                        '<h5>' + escapeHtml(repo.name) + '</h5>' +
+                        '<p>' + desc + '</p>' +
+                        '<div class="repo-meta"><span class="repo-lang">' + lang + '</span><span class="repo-updated">updated ' + updated + '</span></div>' +
+                    '</a>'
+                );
+            }).join('');
+        })
+        .catch(function (err) {
+            container.innerHTML = '<p class="github-activity-empty">Couldn’t load recent activity right now — <a href="https://github.com/AfomaCloud21" target="_blank" rel="noopener">view on GitHub</a> instead.</p>';
+            if (window.console) { console.error('github-activity widget:', err); }
+        });
+})();
+</script>
