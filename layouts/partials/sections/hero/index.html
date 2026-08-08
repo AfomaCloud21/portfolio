@@ -8,11 +8,10 @@
                     {{ $hero.intro }}
                 </span>
                 <h1>
-                    <span class="terminal-prompt" aria-hidden="true"><span class="prompt-symbol type-effect">~/portfolio $</span></span>
-                    {{ $hero.title }}
+                    <span class="type-reveal" style="--reveal-ch: {{ len $hero.title }}ch;">{{ $hero.title }}</span>
                 </h1>
                 <h2>
-                    {{ $hero.subtitle }}
+                    <span class="type-reveal type-reveal-delay" style="--reveal-ch: {{ len $hero.subtitle }}ch;">{{ $hero.subtitle }}</span>
                 </h2>
                 <p class="hero-content">
                     {{ $hero.content | markdownify }}

@@ -89,61 +89,43 @@ footer .card:hover {
 }
 
 /* ---------------------------------------------------------------
-   Hero — terminal status line
+   Hero
    --------------------------------------------------------------- */
 #hero h1 {
-    font-size: clamp(36px, 7vw, 64px) !important;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    font-size: clamp(40px, 8vw, 80px) !important;
+    font-weight: 700 !important;
 }
 
 #hero h2 {
-    font-size: clamp(20px, 4vw, 28px) !important;
-    opacity: 0.75;
-    font-family: var(--font-body) !important;
-    font-weight: 400 !important;
+    font-size: clamp(40px, 8vw, 60px) !important;
+    opacity: 0.6;
+    font-weight: 500 !important;
 }
 
-#hero h1 .terminal-prompt {
-    display: inline-block;
-    font-family: var(--font-mono) !important;
-    font-size: 0.34em;
-    font-weight: 500;
-    color: var(--text-secondary-color);
-    letter-spacing: 0;
-}
-
-#hero h1 .terminal-prompt .prompt-symbol {
-    color: var(--primary-color);
-}
-
-#hero h1 .terminal-prompt .type-effect {
+/* name + subtitle type themselves out on load */
+.type-reveal {
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
     vertical-align: bottom;
-    border-right: 2px solid var(--primary-color);
-    width: 13ch;
+    max-width: 100%;
+    width: var(--reveal-ch);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    #hero h1 .terminal-prompt .type-effect {
+    .type-reveal {
         width: 0;
-        animation:
-            type-out 1s steps(13, end) 0.3s forwards,
-            caret-blink 0.9s steps(1) infinite 1.4s;
+        animation: type-out 1s steps(40, end) 0.2s forwards;
+    }
+
+    .type-reveal-delay {
+        animation-delay: 1.3s;
     }
 }
 
 @keyframes type-out {
     from { width: 0; }
-    to { width: 13ch; }
-}
-
-@keyframes caret-blink {
-    0%, 49% { border-color: var(--primary-color); }
-    50%, 100% { border-color: transparent; }
+    to { width: var(--reveal-ch); }
 }
 
 /* terminal-window chrome on the hero portrait, instead of a big glamour photo */
