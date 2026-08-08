@@ -19,6 +19,9 @@
                             {{ end }}
                         </div>
                         <h5 class="card-title bg-transparent mt-1">{{ .title }}</h5>
+                        {{ if .statusLine }}
+                        <div class="status-line"><span class="status-prompt">$</span> <span class="status-deployed">{{ .deployStatus | default "deployed" }}</span> · {{ .statusLine }}</div>
+                        {{ end }}
                         <div class="card-text bg-transparent secondary-font">
                             {{ .content }}
                         </div>
@@ -60,6 +63,9 @@
                             {{ end }}
                         </div>
                         <h5 class="card-title bg-transparent">{{ .Title | truncate 50 }}</h5>
+                        {{ if .Params.statusLine }}
+                        <div class="status-line"><span class="status-prompt">$</span> <span class="status-deployed">{{ .Params.deployStatus | default "deployed" }}</span> · {{ .Params.statusLine }}</div>
+                        {{ end }}
                         <div class="card-text bg-transparent secondary-font">
                             {{ .Summary | truncate 100 | safeHTML }}
                         </div>

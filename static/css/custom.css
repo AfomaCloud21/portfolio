@@ -1,0 +1,248 @@
+/* ============================================================
+   "Deploy Log" redesign
+   Layered on top of the hugo-profile theme's own stylesheets —
+   loaded last via layouts/partials/head/extensions.html, so it
+   wins the cascade without editing the vendored theme.
+   See .claude/portfolio-redesign-brief.md for the design brief.
+   ============================================================ */
+
+:root {
+    --border-color: #30363D;
+    --success-color: #3FB950;
+    --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+    --font-body: "Inter", "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* ---------------------------------------------------------------
+   Typography
+   --------------------------------------------------------------- */
+body {
+    font-family: var(--font-body) !important;
+}
+
+.secondary-font, #secondary-font,
+.default-font, #default-font {
+    font-family: var(--font-body) !important;
+}
+
+.primary-font, #primary-font {
+    font-family: var(--font-display) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-brand {
+    font-family: var(--font-display) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em;
+}
+
+.badge,
+.mono,
+time,
+#single .title small,
+#single .page-content code,
+#single .page-content pre,
+#single .page-content pre > code,
+#single .page-content kbd,
+#list-page .post-footer span,
+.status-line,
+.terminal-prompt {
+    font-family: var(--font-mono) !important;
+}
+
+/* ---------------------------------------------------------------
+   Calm the stock theme's glow shadows down to a flat border —
+   "quiet, precise layout, not a maximalist one."
+   --------------------------------------------------------------- */
+#about .image img,
+#education .card,
+#achievements .card,
+#experience .experience-container,
+#single .featured-image img,
+#single aside.aboutImg img,
+#hero .image img,
+#list-page .card,
+footer .card,
+.showHeaderOnTop {
+    box-shadow: none !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+#education .card:hover,
+#achievements .card:hover,
+#achievements .card:focus,
+footer .card:hover {
+    box-shadow: none !important;
+    border: 1px solid var(--primary-color) !important;
+    transition: border-color 0.2s ease;
+}
+
+/* Badges read as terminal tags, not filled pills */
+.badge {
+    background-color: transparent !important;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 0.75rem;
+    padding: 0.3em 0.6em;
+}
+
+/* ---------------------------------------------------------------
+   Hero — terminal status line
+   --------------------------------------------------------------- */
+#hero h1 {
+    font-size: clamp(36px, 7vw, 64px) !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#hero h2 {
+    font-size: clamp(20px, 4vw, 28px) !important;
+    opacity: 0.75;
+    font-family: var(--font-body) !important;
+    font-weight: 400 !important;
+}
+
+#hero h1 .terminal-prompt {
+    display: inline-block;
+    font-family: var(--font-mono) !important;
+    font-size: 0.34em;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+    letter-spacing: 0;
+}
+
+#hero h1 .terminal-prompt .prompt-symbol {
+    color: var(--primary-color);
+}
+
+#hero h1 .terminal-prompt .type-effect {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+    border-right: 2px solid var(--primary-color);
+    width: 13ch;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    #hero h1 .terminal-prompt .type-effect {
+        width: 0;
+        animation:
+            type-out 1s steps(13, end) 0.3s forwards,
+            caret-blink 0.9s steps(1) infinite 1.4s;
+    }
+}
+
+@keyframes type-out {
+    from { width: 0; }
+    to { width: 13ch; }
+}
+
+@keyframes caret-blink {
+    0%, 49% { border-color: var(--primary-color); }
+    50%, 100% { border-color: transparent; }
+}
+
+/* terminal-window chrome on the hero portrait, instead of a big glamour photo */
+#hero .image {
+    position: relative;
+}
+
+#hero .image::before {
+    content: "\25CF \25CF \25CF";
+    position: absolute;
+    top: -1.6rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    letter-spacing: 0.4em;
+    font-size: 0.55rem;
+    color: var(--text-secondary-color);
+    opacity: 0.45;
+}
+
+#hero .image img {
+    border-radius: 0.5rem !important;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+#hero .hero-bottom-svg {
+    display: none;
+}
+
+/* ---------------------------------------------------------------
+   Project cards — deploy-log status line (the signature element)
+   --------------------------------------------------------------- */
+.status-line {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-secondary-color);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.5em 0.7em;
+    margin: 0.6em 0 0.9em;
+    line-height: 1.55;
+    overflow-wrap: break-word;
+}
+
+.status-line .status-prompt {
+    color: var(--primary-color);
+}
+
+.status-line .status-deployed {
+    color: var(--success-color);
+}
+
+#projects .card,
+#list-page .card {
+    transition: border-color 0.2s ease;
+    border: 1px solid var(--border-color) !important;
+}
+
+#projects .card:hover,
+#projects .card:focus-within,
+#list-page .card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: var(--primary-color) !important;
+}
+
+#projects .card:hover .card-img-top {
+    transform: none !important;
+}
+
+/* ---------------------------------------------------------------
+   Accessibility — visible keyboard focus everywhere
+   --------------------------------------------------------------- */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.card:focus-visible,
+.nav-link:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------
+   Respect prefers-reduced-motion globally
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    #hero h1 .terminal-prompt .type-effect {
+        width: 13ch !important;
+        border-right: none !important;
+    }
+}
