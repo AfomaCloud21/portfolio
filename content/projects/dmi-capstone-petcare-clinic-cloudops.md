@@ -35,6 +35,10 @@ This was the final capstone of the DevOps Micro Internship: an 11-person, global
 
 Requests enter through an **API Gateway** (Spring Cloud Gateway) that handles routing, rate limiting, and circuit breaking. Behind it, a **Config Server** serves centralized, environment-specific configuration to every other service, and a **Discovery Server** (Eureka) keeps a live registry of every microservice instance — when `vets-service` needs `customers-service`, it asks Eureka for the current address rather than relying on a hardcoded IP. Three domain services — **Customers**, **Vets**, **Visits** — each own an isolated MySQL database, so a schema failure in one never cascades into another. **Zipkin** provides distributed tracing across the whole request path, **Prometheus** scrapes metrics from every service's `/actuator` endpoint every 15 seconds, and **Grafana** turns those metrics into dashboards.
 
+![Eureka dashboard showing every microservice instance registered and UP](/images/dmi-capstone-petcare-clinic-cloudops/petclinic-eureka-registry.png)
+
+![Prometheus querying live JVM memory metrics scraped from the vets and API Gateway services](/images/dmi-capstone-petcare-clinic-cloudops/petclinic-prometheus-metrics.png)
+
 ```
 Users → NGINX Ingress (TLS via cert-manager) → API Gateway
                                                      │
@@ -102,6 +106,14 @@ The second blocker didn't have a settings-panel fix. Running the full stack — 
 The lesson underneath both attempts was the same one from the ArgoCD/EKS incident, just at a different layer: **startup order is not incidental.** Config Server holds every other service's configuration; Eureka is the registry every service needs to find its neighbors. If anything else starts before those two are actually *healthy* — not just running — it fails to fetch config or register and comes up broken. `depends_on` with health checks is what enforces "wait until ready," not "wait until the container exists," on EC2 just as much as it was on EKS.
 
 I verified the final deployment across three layers: the browser (owners, pets, visit history, and vets list all functional), an automated `curl` HTTP-200 check, and the observability stack itself confirming registration and traceability — watching a request flow through `api-gateway → customers-service` live in Zipkin made distributed tracing concrete in a way no architecture diagram had.
+
+![Spring PetClinic homepage running live in the browser](/images/dmi-capstone-petcare-clinic-cloudops/petclinic-homepage.png)
+
+![Owners list, populated and searchable, on the redeployed instance](/images/dmi-capstone-petcare-clinic-cloudops/petclinic-owners-list.png)
+
+![Owner detail view showing registered pets and visit history](/images/dmi-capstone-petcare-clinic-cloudops/petclinic-owner-pets-visits.png)
+
+![PetClinic's AI chat assistant registering a new pet against the Customers service on the live petclinicnow.com deployment](/images/dmi-capstone-petcare-clinic-cloudops/petclinic-owner-detail-chat.png)
 
 ## What I'd change for real production
 
