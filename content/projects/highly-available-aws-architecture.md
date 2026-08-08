@@ -18,6 +18,9 @@ tags:
   - "Load Balancing"
 toc: true
 showInHome: false
+image: "/images/highly-available-aws-architecture/epicbook.png"
+deployStatus: "deployed"
+statusLine: "VPC + ALB + ASG (2–4 instances) · Multi-AZ RDS failover · 2 failure tests passed"
 ---
 
 Deploying an app is one thing; proving it survives failure is another. This project builds a highly-available two-tier AWS architecture and then verifies it under simulated failure conditions, before scaling the pattern up to a full three-tier capstone.
@@ -41,6 +44,8 @@ The next iteration made the architecture genuinely fault-tolerant rather than ju
 I ran two failure tests rather than trusting the architecture on paper: terminating one web instance and confirming the ASG launched a replacement while the ALB kept serving traffic without interruption, then simulating an AZ disruption by stopping an instance in one zone and confirming the other zone absorbed the load with no downtime.
 
 ## Capstone: three-tier Book Review app
+
+![Three-tier Book Review app architecture on AWS](/images/highly-available-aws-architecture/book-review-app-aws-architecture.svg)
 
 The final iteration split the architecture into three properly isolated tiers behind two load balancers — a public ALB in front of the web tier (Next.js + Nginx), and an **internal** ALB routing only from the web tier to backend EC2 instances (Node.js + PM2) in private subnets, backed by RDS MySQL Multi-AZ with a read replica. Real production debugging showed up here: a books-not-displaying bug traced to incorrect environment routing (fixed by rebuilding the frontend after correcting `.env.local`), a backend 500 traced to Nginx not forwarding `Host`/`X-Real-IP` headers, and a private-subnet package install failure traced to missing outbound routing — resolved via correct security-group referencing and bastion-style access.
 

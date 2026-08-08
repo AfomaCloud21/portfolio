@@ -17,9 +17,14 @@ tags:
   - "Terraform"
 toc: true
 showInHome: false
+image: "/images/ansible-fleet-automation/an2.png"
+deployStatus: "configured"
+statusLine: "Ansible fleet · 4 VMs across 2 Azure regions · changed=0 failed=0"
 ---
 
 Terraform builds the infrastructure; Ansible configures it. This project covers that handoff at increasing scale — from four bare VMs to a production-style, role-based deployment — and the free-tier quota walls I had to design around along the way.
+
+![Ansible playbook run against the VM fleet](/images/ansible-fleet-automation/an10.png)
 
 ## Provisioning a 4-VM fleet under real quota constraints
 

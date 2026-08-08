@@ -17,6 +17,9 @@ tags:
   - "High Availability"
 toc: true
 showInHome: false
+image: "/images/azure-cloud-infrastructure/epicbk.png"
+deployStatus: "deployed"
+statusLine: "zone-redundant 3-tier Azure network · public + internal load balancer · Key Vault + Managed Identity"
 ---
 
 This case study tracks how I scaled Azure infrastructure knowledge from a single manually-provisioned VM up to a proper multi-tier, load-balanced network — the Azure counterpart to the AWS work in this portfolio, and the foundation the later Terraform automation builds on.
@@ -34,6 +37,8 @@ The next step moved beyond a single box to a segmented network: a VNet (`10.0.0.
 I then deployed a real full-stack app — EpicBook, a Node.js bookstore — onto this pattern: a VNet with public/private subnets, NSG rules for SSH/HTTP/app traffic, Node.js + Nginx on the VM, and **Azure Database for MySQL** (a managed service, not a self-hosted database) holding the `bookstore` schema. Nginx reverse-proxied port 80 to the app on port 8080. The first deploy hit a 502 Bad Gateway — the backend simply wasn't running yet — which is a useful reminder that a reverse proxy returning 502 almost always means "upstream not listening," not a proxy misconfiguration.
 
 ## Capstone: zone-redundant 3-tier architecture
+
+![Book Review app running on the zone-redundant capstone architecture](/images/azure-cloud-infrastructure/book-review-app.png)
 
 The most advanced version of this pattern was a full production-shaped deployment of a Book Review app across two Availability Zones:
 

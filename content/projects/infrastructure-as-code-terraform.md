@@ -17,6 +17,9 @@ tags:
   - "Azure"
 toc: true
 showInHome: false
+image: "/images/infrastructure-as-code-terraform/epicbook.png"
+deployStatus: "provisioned"
+statusLine: "terraform apply · 6 → 13 resources · AWS + Azure, zero manual steps"
 ---
 
 Terraform is where the manual, portal-driven provisioning from the AWS and Azure case studies in this portfolio turns into repeatable, version-controlled infrastructure. This project moved through four increasingly complex builds, each one adding a layer: single VM → networked VM with a web server → full application deployment → multi-tier production architecture.
@@ -42,6 +45,8 @@ Terraform's error messages were the actual curriculum here:
 - **RDS security group misconfiguration** — initially opened by CIDR block; corrected to reference the EC2 security group ID directly (`security_groups = [aws_security_group.ec2_sg.id]`), so only that specific instance can reach the database, regardless of its IP.
 
 ## Going further: a modular capstone
+
+![Book Review app three-tier architecture, provisioned entirely by Terraform modules](/images/infrastructure-as-code-terraform/book-review-app-aws-architecture.svg)
 
 The most advanced build used a proper module structure (`modules/networking`, `modules/security`, `modules/ec2`, `modules/database`, `modules/alb`) to provision a two-AZ, six-subnet, dual-load-balancer three-tier architecture for a Book Review app — the same shape as the manually-built HA architecture elsewhere in this portfolio, but fully declarative and reproducible from `terraform apply`.
 

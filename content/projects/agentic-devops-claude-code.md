@@ -15,9 +15,14 @@ tags:
   - "Agentic AI"
   - "DevOps Tooling"
 toc: true
+image: "/images/agentic-devops-claude-code/ai2.png"
+deployStatus: "audited"
+statusLine: "Claude Code + MCP · 3 subagents, 3 hook gates · 1 CRITICAL finding caught"
 ---
 
 Traditional DevOps tooling is fragmented by design — Terraform for infrastructure, GitHub for code, Docker for containers, monitoring in yet another tool, with a human doing all the coordinating. This project was about building the opposite: a single agentic workflow where Claude Code plans, acts, and verifies across that whole toolchain, with explicit safety controls so "agentic" doesn't mean "unsupervised."
+
+![Claude Code agentic workflow in action](/images/agentic-devops-claude-code/ai5.png)
 
 ## Teaching Claude the project: CLAUDE.md
 

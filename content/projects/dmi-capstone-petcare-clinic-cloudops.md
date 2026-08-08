@@ -22,11 +22,16 @@ tags:
   - "Observability"
   - "Terraform"
 toc: true
+image: "/images/dmi-capstone-petcare-clinic-cloudops/petclinic-aws-arch.png"
+deployStatus: "deployed"
+statusLine: "AWS EKS + ArgoCD GitOps · 11-engineer team · push → running pod in ~8 min"
 ---
 
 This was the final capstone of the DevOps Micro Internship: an 11-person, globally distributed team (Nigeria and India) took the open-source [Spring PetClinic Microservices](https://github.com/spring-petclinic/spring-petclinic-microservices) application and deployed it as a real, production-shaped system on AWS — Terraform-provisioned EKS, Dockerized services, GitHub Actions CI, ArgoCD GitOps CD, and a full Prometheus/Grafana/Zipkin observability stack — in a **7-day execution window**. I co-led the project alongside our Cloud lead, owning Jira delivery and the CI/CD pipeline end to end. I followed it with a solo redeployment of the same application, to prove I understood the whole system, not just my slice of it — a redeployment that ended up teaching me as much about adapting under a real resource constraint as the original team build did.
 
 ## Architecture
+
+![Spring PetClinic microservices architecture on AWS EKS](/images/dmi-capstone-petcare-clinic-cloudops/spring-petclinic-architecture.svg)
 
 Requests enter through an **API Gateway** (Spring Cloud Gateway) that handles routing, rate limiting, and circuit breaking. Behind it, a **Config Server** serves centralized, environment-specific configuration to every other service, and a **Discovery Server** (Eureka) keeps a live registry of every microservice instance — when `vets-service` needs `customers-service`, it asks Eureka for the current address rather than relying on a hardcoded IP. Three domain services — **Customers**, **Vets**, **Visits** — each own an isolated MySQL database, so a schema failure in one never cascades into another. **Zipkin** provides distributed tracing across the whole request path, **Prometheus** scrapes metrics from every service's `/actuator` endpoint every 15 seconds, and **Grafana** turns those metrics into dashboards.
 

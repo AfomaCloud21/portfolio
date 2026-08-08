@@ -15,9 +15,14 @@ tags:
   - "Version Control"
 toc: true
 showInHome: false
+image: "/images/git-github-branching-workflow/git1.png"
+deployStatus: "shipped"
+statusLine: "feature branch → PR · fork + upstream remotes · atomic commit history"
 ---
 
 Most DevOps failures I ran into later in this portfolio trace back to version control discipline — a bad merge, an untracked change, a missing branch protection rule. This project (codename **CodeTrack**) was about building that discipline deliberately, from `git init` through a real open-source-style pull request.
+
+![CodeTrack branching workflow in the GitHub UI](/images/git-github-branching-workflow/git2.png)
 
 ## Identity and initialization
 

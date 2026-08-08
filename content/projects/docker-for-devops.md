@@ -16,9 +16,14 @@ tags:
   - "CI/CD"
 toc: true
 showInHome: false
+image: "/images/docker-for-devops/epicbook-docker-architecture.png"
+deployStatus: "deployed"
+statusLine: "Docker multi-stage build · 95% image size reduction · 28 pipeline runs"
 ---
 
 Containerizing an app correctly is less about "does it run in a container" and more about what you leave out. This project moved from a basic cloud-init Docker bootstrap to multi-stage builds with measured size reductions, and finally to a full production-shaped stack for EpicBook with healthchecks, backups, and a real CI/CD pipeline.
+
+![EpicBook CI/CD pipeline: build, push, deploy, healthcheck](/images/docker-for-devops/epicbook-cicd-pipeline.png)
 
 ## Bootstrapping Docker with cloud-init
 

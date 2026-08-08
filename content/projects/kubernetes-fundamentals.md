@@ -14,9 +14,14 @@ tags:
   - "AKS"
   - "Containers"
 toc: true
+image: "/images/kubernetes-fundamentals/ass4-wk12-tree.png"
+deployStatus: "live"
+statusLine: "AKS LoadBalancer Service · scaled 2 → 4 replicas · public IP unchanged"
 ---
 
 The fastest way to actually understand a Kubernetes concept is to break it on purpose and watch how the cluster reacts. Every stage of this project followed that pattern: build the feature, then deliberately misconfigure it to see the failure mode before fixing it.
+
+![Kubernetes resource tree for the week 12 assignment](/images/kubernetes-fundamentals/ass4-wk12-tree.png)
 
 ## Pods, ReplicaSets, Deployments
 

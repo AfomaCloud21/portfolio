@@ -17,9 +17,14 @@ tags:
   - "DevOps Lifecycle"
 toc: true
 showInHome: false
+image: "/images/agile-devops-lifecycle-jira/lc2.png"
+deployStatus: "shipped"
+statusLine: "5-day sprint · 8 user stories · 1 increment/day deployed to EC2"
 ---
 
 DevOps isn't just pipelines and infrastructure — it's also the delivery process wrapped around them. This project was about proving I could run that process end to end: standing up a Scrum board in Jira, breaking work into epics and stories, running a real sprint, and shipping a verifiable increment to production on a deadline.
+
+![Jira Scrum board tracking the sprint](/images/agile-devops-lifecycle-jira/lc4.png)
 
 ## What I built
 

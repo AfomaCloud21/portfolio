@@ -19,9 +19,14 @@ tags:
   - "Docker"
   - "Multi-Cloud"
 toc: true
+image: "/images/epicbook-multi-cloud-deployment/epicbook.png"
+deployStatus: "deployed"
+statusLine: "Terraform + Ansible on Azure · 5 production bugs fixed · changed=0 failed=0"
 ---
 
 EpicBook — a Node.js + MySQL bookstore app — is the one project that shows up across nearly every DevOps discipline in this portfolio. Rather than write it up once, this case study pulls together its most complete iteration: **Terraform + Ansible on Azure**, cross-referenced against its AWS, Docker, and CI/CD variants elsewhere in this site.
+
+![EpicBook running live after the Terraform + Ansible deploy](/images/epicbook-multi-cloud-deployment/epicbk.png)
 
 ## Architecture
 

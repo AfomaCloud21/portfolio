@@ -19,9 +19,14 @@ tags:
   - "Linux"
 toc: true
 showInHome: false
+image: "/images/aws-foundation-static-hosting/aws1.png"
+deployStatus: "deployed"
+statusLine: "EC2 + Nginx + S3 static hosting · ports 22/80 only · incident drill passed"
 ---
 
 Before touching Terraform or Kubernetes, I spent time on the fundamentals that everything else sits on top of: a real Linux server, a real deployment, and the operational habits that keep it running. This case study covers three deployments that build on each other — a React app on EC2, a static site on S3, and a full production maintenance drill.
+
+![EC2 deployment verified live in the browser](/images/aws-foundation-static-hosting/aws5.png)
 
 ## Deploying a React app on EC2 with Nginx
 
