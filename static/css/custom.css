@@ -97,9 +97,9 @@ footer .card:hover {
 }
 
 #hero h2 {
-    font-size: clamp(40px, 8vw, 60px) !important;
+    font-size: clamp(16px, 2.6vw, 26px) !important;
     opacity: 0.6;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
 }
 
 /* name + subtitle type themselves out on load */
