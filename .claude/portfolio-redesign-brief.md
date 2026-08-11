@@ -21,8 +21,7 @@ Utility/metadata/tags/dates: JetBrains Mono or IBM Plex Mono — this is the del
 
 Layout
 
-Hero: name/title treated like a terminal status line — e.g. a big Afoma Egbuonu
-DevOps Engineer & Cloud Infrastructure Specialist prompt-style and remove the name, understated, not gimmicky. Avoid a big centered photo-and-tagline template layout.
+Hero: name/title treated like a terminal status line — e.g. a big, type-out Afoma Egbuonu (no `$` prompt prefix on the name itself) with a much smaller, muted DevOps Engineer & Cloud Infrastructure Specialist subtitle underneath, prompt-style and understated, not gimmicky. Avoid a big centered photo-and-tagline template layout.
 Project cards: each includes a small monospace "status line" summarizing the deploy, e.g.: $ deployed · Docker + Terraform + Ansible · 3 services · 89% image size reduction This is the signature element — it should look like real terminal output (subtle blinking cursor optional, tasteful, not cheesy), and the specific stats should be pulled from that project's actual case study content (image size %, VM count, uptime stats, etc.) — never generic filler stats.
 Keep spacing disciplined and generous — this is a quiet, precise layout, not a maximalist one. The amber accent and the status-line device are the only "loud" elements; everything else should be calm.
 Motion
