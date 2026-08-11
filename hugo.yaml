@@ -156,8 +156,8 @@ params:
     enable: true
     intro: "Hi, my name is"
     title: "Afoma Egbuonu."
-    subtitle: "DevOps Engineer & Cloud Infrastructure Specialist"
-    content: "I own production cloud infrastructure for a live EdTech platform on Microsoft Azure — provisioning with Terraform, orchestrating containers on Kubernetes (AKS/EKS), and shipping through CI/CD pipelines and GitOps. I diagnose infrastructure issues directly from logs, quota errors, and pipeline failures, and I increasingly bring agentic AI tooling like Claude Code into that workflow to move faster without cutting corners."
+    subtitle: "DevOps Engineer, Cloud Infrastructure & Automation Specialist"
+    content: "I own production cloud infrastructure for a live EdTech platform on Microsoft Azure — provisioning with Terraform, orchestrating containers on Kubernetes (AKS/EKS), and shipping through CI/CD pipelines and GitOps. I diagnose infrastructure issues directly from logs, quota errors, and pipeline failures. I also build agentic AI automation workflows with Claude Code — going beyond using it as a coding assistant to using it as an execution layer that can scaffold, configure, deploy, and operate full applications end to end, with deliberate safety guardrails around what it's allowed to run."
     image: /images/me-hero.jpeg
     bottomImage:
       enable: true
@@ -187,6 +187,8 @@ params:
       I'm a DevOps Engineer and Repository Manager based in Lagos, Nigeria, with hands-on ownership of production cloud infrastructure for a live EdTech platform on Microsoft Azure. I work across the full infrastructure lifecycle: provisioning with Terraform, container orchestration on Kubernetes (AKS/EKS), CI/CD pipeline design (Azure Pipelines, GitHub Actions, ArgoCD), and GitOps-based release management.
 
       I'm comfortable owning repository and access governance for a multi-contributor engineering team, and I diagnose infrastructure issues directly from logs, quota errors, and pipeline failures rather than documentation alone. I previously led product delivery as a Technical Product Manager — a background that shapes how I approach shipping infrastructure, with the same structured, detail-first discipline around planning and cross-functional delivery.
+
+      Automation is where a lot of my current focus sits. I use Claude Code as more than an autocomplete tool — I direct it to scaffold entire projects, write and wire up infrastructure-as-code, configure CI/CD pipelines, and run full deployment workflows, while I design the safety boundaries around what it's permitted to execute (this portfolio site itself was built and deployed this way). That combination — real infrastructure ownership plus fluency directing agentic AI tooling to execute it — is the specific edge I bring to a team.
     skills:
       enable: true
       title: "Technical skills I work with:"
